@@ -21,6 +21,13 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using System;
 using System.Collections.Generic;
+using CleanArch.CrossCuttingConcerns.Identity;
+using CleanArch.CrossCuttingConcerns.OS;
+using CleanArch.Infrastructure.Identity;
+using CleanArch.Infrastructure.OS;
+using MediatR;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace CleanArch.Api
 {
@@ -48,6 +55,9 @@ namespace CleanArch.Api
             services.AddApplicationServices();
 
             services.AddScoped<ILoggedInUserService, LoggedInUserService>();
+
+            services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IActionContextAccessor, ActionContextAccessor>();
 
             services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
 

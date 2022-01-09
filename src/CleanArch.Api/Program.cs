@@ -17,7 +17,7 @@ namespace CleanArch.Api
                 var applicationDbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 applicationDbContext.Database.Migrate();
 
-                var identityDbContext = scope.ServiceProvider.GetRequiredService<IdentityDbContext>();
+                var identityDbContext = scope.ServiceProvider.GetRequiredService<IdentityContext>();
                 identityDbContext.Database.Migrate();
             }
 

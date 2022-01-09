@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CleanArch.Persistence.Context
 {
-    public class AuditableContext : IdentityContext
+    public class AuditableContext : DbContext
     {
         public AuditableContext(DbContextOptions options) : base(options)
         {
